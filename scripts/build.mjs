@@ -17,7 +17,7 @@ const extra = [
   ['arkusz/obszar.xlsx', 'pliki/obszar.xlsx'],
   ['arkusz/zrzut.png', 'img/arkusz.png'],
   ['animacja/dist/project.js', 'animacja/project.js'],
-  ['animacja/node_modules/@motion-canvas/player/dist/main.js', 'animacja/player.js'],
+  ['animacja/dist-player/player.js', 'animacja/player.js'],
 ];
 for (const [from, to] of extra) {
   if (!existsSync(from)) {

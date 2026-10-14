@@ -1,0 +1,20 @@
+{
+  "name": "animacja",
+  "private": true,
+  "scripts": {
+    "start": "vite",
+    "build": "vite build && vite build -c vite.player.config.ts"
+  },
+  "dependencies": {
+    "@motion-canvas/2d": "3.17.2",
+    "@motion-canvas/core": "3.17.2",
+    "@motion-canvas/player": "3.17.2"
+  },
+  "devDependencies": {
+    "@motion-canvas/ffmpeg": "3.17.2",
+    "@motion-canvas/ui": "3.17.2",
+    "@motion-canvas/vite-plugin": "3.17.2",
+    "typescript": "^5.4.0",
+    "vite": "^4.5.0"
+  }
+}

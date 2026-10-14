@@ -23,7 +23,7 @@ jobs:
       - name: Build animacji (jeśli jest)
         run: |
           if [ -f animacja/package.json ]; then
-            cd animacja && npm ci && npx vite build
+            cd animacja && npm ci && npm run build
           fi
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
