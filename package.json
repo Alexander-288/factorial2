@@ -1,0 +1,10 @@
+{
+  "name": "factorial2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "build": "node scripts/build.mjs",
+    "serve": "python -m http.server 8000 -d dist"
+  }
+}

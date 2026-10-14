@@ -31,3 +31,8 @@ desktop.ini
 .env
 .env.*
 !.env.example
+
+# Build
+node_modules/
+dist/
+animacja/output/
