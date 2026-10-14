@@ -34,7 +34,7 @@
 
     <main class="content">
       <h1 data-blunt="title">Implementacja programistyczna</h1>
-      <p class="lead" data-blunt="lead">Oba programy robią to samo. Bisekcją szukają ujemnego i dodatniego punktu przecięcia z dokładnością $\varepsilon = 10^{-6}$, a potem liczą pole metodą trapezów i metodą Simpsona dla $n = 4, 10, 100$ i porównują wynik z wartością dokładną $P \approx 1.094754$.</p>
+      <p class="lead" data-blunt="lead">Oba programy robią to samo. Bisekcją szukają ujemnego i dodatniego punktu przecięcia z zadaną dokładnością $\varepsilon$, a potem liczą pole metodą trapezów i metodą Simpsona dla $n = 4, 10, 100$ i porównują wynik z wartością dokładną $P \approx 1.094754$.</p>
 
       <div class="tabs" role="tablist" aria-label="Język programu">
         <button role="tab" id="tab-python" aria-selected="true" aria-controls="panel-python" data-lang="python" data-blunt="tab-python">Python, Adam Kowalczyk</button>
@@ -44,7 +44,8 @@
         <pre><code class="language-python" data-src="kod/calka.py"></code></pre>
         <p><a class="btn ghost" href="kod/calka.py" download data-blunt="dl-python">Pobierz calka.py</a></p>
         <h2 data-blunt="run-python-title">Uruchomienie</h2>
-        <p data-blunt="run-python-text">Zrzut ekranu z terminala: widać dokładność $\varepsilon$, liczbę podprzedziałów $n$ i wynik pola.</p>
+        <p data-blunt="run-python-text">Zrzut ekranu z terminala: widać punkty przecięcia, liczbę iteracji bisekcji, liczbę podprzedziałów $n$ i wynik pola.</p>
+        <p class="note" data-blunt="run-python-eps">Program w Pythonie liczy bisekcję z dokładnością $\varepsilon = 10^{-12}$ zamiast $10^{-6}$, dlatego wykonuje 39 iteracji zamiast 19, a $T_{10}$ różni się od wartości z modułu 1 na szóstym miejscu po przecinku.</p>
         <img class="shot" src="img/python.png" alt="Zrzut ekranu: uruchomienie programu w Pythonie z parametrami eps, n i wynikiem pola">
       </section>
       <section role="tabpanel" id="panel-cpp" aria-labelledby="tab-cpp" data-panel="cpp" hidden>
