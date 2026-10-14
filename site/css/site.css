@@ -145,3 +145,10 @@ pre code.hljs { background: transparent; padding: 18px; font: 400 0.8125rem/1.6 
 /* Wykres dot-matrix w module 1 */
 .chart { background: var(--chip); border-radius: var(--card-radius); padding: 16px; margin: 16px 0; }
 .chart canvas { display: block; width: 100%; height: 240px; }
+
+/* Aplet GeoGebry i panel wartości */
+.applet { margin: 24px 0 12px; border-radius: var(--card-radius); overflow: hidden; background: var(--chip); min-height: 280px; }
+.readout { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 12px 0 8px; }
+.readout div { background: var(--chip); border-radius: 12px; padding: 10px 14px; font-size: 0.8125rem; color: var(--muted); }
+.readout strong { display: block; color: var(--ink); font: 500 0.95rem/1.5 "Martian Mono", monospace; }
+.readout em { display: block; font: normal 0.6875rem/1.4 "Martian Mono", monospace; color: var(--muted); }

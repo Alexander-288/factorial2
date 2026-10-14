@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moduł 4: GeoGebra - Pole między x² a cos x</title>
+  <script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Martian+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <div class="panel">
+    <header class="top">
+      <a class="brand" href="index.html" data-blunt="brand">Pole między x² a cos x</a>
+      <nav class="pill-nav" aria-label="Moduły">
+        <a href="modul1.html">Matematyka</a>
+        <a href="modul2.html">Program</a>
+        <a href="modul3.html">Arkusz</a>
+        <a href="modul4.html" aria-current="page">GeoGebra</a>
+        <a href="modul5.html">Animacja</a>
+      </nav>
+      <div class="theme-switch" role="group" aria-label="Motyw">
+        <button type="button" data-theme="light">Jasny</button>
+        <button type="button" data-theme="dark">Ciemny</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <p class="kicker" data-blunt="kicker">Moduł 4 z 5</p>
+      <h1 data-blunt="title">Aplet GeoGebry</h1>
+      <p class="lead" data-blunt="lead">Niebieska krzywa to $y = \cos x$, czarna to $y = x^2$. Zacieniowany obszar to szukane pole $P$. Suwak $n$ zmienia liczbę podprzedziałów, a paski pokazują przybliżenie całki.</p>
+
+      <div class="applet" id="ggb" aria-label="Aplet GeoGebry z suwakiem n"></div>
+
+      <div class="readout" aria-live="polite">
+        <div><span data-blunt="ro-n">Podprzedziały</span><strong id="v-n"></strong></div>
+        <div><span data-blunt="ro-h">Krok h</span><strong id="v-h"></strong></div>
+        <div><span data-blunt="ro-t">Trapezy Tₙ</span><strong id="v-t"></strong><em id="e-t"></em></div>
+        <div><span data-blunt="ro-m">Prostokąty Mₙ</span><strong id="v-m"></strong><em id="e-m"></em></div>
+        <div><span data-blunt="ro-s">Simpson Sₙ</span><strong id="v-s"></strong><em id="e-s"></em></div>
+        <div><span data-blunt="ro-p">Pole dokładne P</span><strong id="v-p"></strong></div>
+      </div>
+
+      <h2 data-blunt="how-title">Jak czytać aplet</h2>
+      <p data-blunt="how-p1">Każdy pasek ma pionowe boki o długościach $f(x_i)$ i $f(x_{i+1})$, gdzie $f(x) = \cos x - x^2$, więc jego pole to $\frac{h}{2}\left(f(x_i) + f(x_{i+1})\right)$. Suma pasków to dokładnie $T_n$.</p>
+      <p data-blunt="how-p2">Po zaznaczeniu pola „Prostokąty” paski mają wysokość $f$ w środku podprzedziału. To metoda prostokątów (punktu środkowego), $M_n = h\sum f\!\left(x_i + \tfrac{h}{2}\right)$.</p>
+      <p data-blunt="how-p3">Przy małym $n$ widać lukę między paskami a krzywą $\cos x$. Gdy $n$ rośnie, luka znika, a $T_n$ zbliża się do $P$.</p>
+      <p><a class="btn" href="pliki/obszar.ggb" download data-blunt="dl-ggb-file">Pobierz obszar.ggb</a> <button class="btn ghost" id="ggb-download" type="button" data-blunt="dl-ggb">Zapisz aktualny stan apletu</button></p>
+
+      <nav class="pager" aria-label="Kolejne moduły">
+        <a href="modul3.html" class="mono">[Moduł 3: Arkusz]</a>
+        <a href="modul5.html" class="mono">[Moduł 5: Animacja]</a>
+      </nav>
+    </main>
+
+    <footer class="foot">
+      <p data-blunt="footer-left">Projekt z metod numerycznych, 2026</p>
+      <p data-blunt="footer-right">Sprengel, Ankiewicz, Nastały, Kowalczyk</p>
+    </footer>
+  </div>
+  <script src="js/theme.js"></script>
+  <script type="module" src="js/backdrop.js"></script>
+  <script type="module" src="js/modul4.js"></script>
+</body>
+</html>
