@@ -16,3 +16,7 @@ buttons.forEach((b) => b.addEventListener('click', () => {
 }));
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change', sync);
 sync();
+
+// Na wąskim ekranie przewiń pigułkę nawigacji do aktywnego modułu
+const active = document.querySelector('.pill-nav [aria-current="page"]');
+if (active) active.parentElement.scrollLeft = active.offsetLeft - (active.parentElement.clientWidth - active.clientWidth) / 2;
