@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pole między x² a cos x</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="index.html">Pole między x² a cos x</a>
+      <nav class="modules" aria-label="Moduły">
+        <a href="modul1.html">1. Matematyka</a>
+        <a href="modul2.html">2. Program</a>
+        <a href="modul3.html">3. Arkusz</a>
+        <a href="modul4.html">4. GeoGebra</a>
+        <a href="modul5.html">5. Animacja</a>
+      </nav>
+      <button id="theme-toggle" type="button" aria-label="Zmień motyw jasny lub ciemny">Motyw</button>
+    </div>
+  </header>
+  <main>
+    <h1>Pole obszaru między $y = x^2$ a $y = \cos x$</h1>
+    <p class="lead">Dwie krzywe przecinają się w dwóch punktach i zamykają między sobą obszar.
+    Liczymy jego pole metodami numerycznymi.</p>
+
+    <figure style="margin:0">
+      <div class="hero-plot" id="hero-plot"></div>
+      <figcaption class="plot-caption">Obszar między krzywymi, od $-r$ do $r$. Punkty przecięcia wyznaczone bisekcją.</figcaption>
+    </figure>
+
+    <h2>Problem</h2>
+    <p>Punktów przecięcia nie da się wyznaczyć analitycznie, bo trzeba rozwiązać równanie przestępne
+    $x^2 - \cos x = 0$. Dlatego granice całkowania znajdujemy metodą bisekcji, a pole liczymy
+    metodą trapezów i metodą Simpsona:</p>
+    $$P = \int_{a}^{b} \left(\cos x - x^2\right)\,dx$$
+
+    <h2>Wyniki</h2>
+    <div class="facts">
+      <div>Punkty przecięcia<strong>±0.824132</strong></div>
+      <div>Bisekcja, $\varepsilon = 10^{-6}$<strong>19 iteracji</strong></div>
+      <div>Trapezy, $n = 100$<strong>1.094646</strong></div>
+      <div>Simpson, $n = 10$<strong>1.094760</strong></div>
+    </div>
+
+    <h2>Moduły</h2>
+    <ol class="module-list">
+      <li><a href="modul1.html"><span class="num">1</span><span>Opracowanie matematyczne<span class="desc">Całka, bisekcja i twierdzenie Darboux, wzory trapezów i Simpsona, błędy.</span></span></a></li>
+      <li><a href="modul2.html"><span class="num">2</span><span>Implementacja programistyczna<span class="desc">Programy w Pythonie i C++ z wynikami uruchomienia.</span></span></a></li>
+      <li><a href="modul3.html"><span class="num">3</span><span>Arkusz kalkulacyjny<span class="desc">Tabele iteracji bisekcji i całkowania, wykres obszaru.</span></span></a></li>
+      <li><a href="modul4.html"><span class="num">4</span><span>Aplet GeoGebry<span class="desc">Zacieniowany obszar i trapezy sterowane suwakiem $n$.</span></span></a></li>
+      <li><a href="modul5.html"><span class="num">5</span><span>Animacja<span class="desc">Zawężanie przedziału bisekcji i zagęszczanie podziału.</span></span></a></li>
+    </ol>
+
+    <h2>Zespół</h2>
+    <ul class="team">
+      <li><strong>Aleksander Sprengel</strong>: strona, opracowanie matematyczne, GeoGebra, animacja</li>
+      <li><strong>Adam Kowalczyk</strong>: program w Pythonie</li>
+      <li><strong>Mikołaj Ankiewicz</strong>: program w C++</li>
+      <li><strong>Kordian Nastały</strong>: arkusz kalkulacyjny</li>
+    </ul>
+  </main>
+  <footer>Projekt z metod numerycznych, 2026. Aleksander Sprengel, Mikołaj Ankiewicz, Kordian Nastały, Adam Kowalczyk.</footer>
+  <script src="js/theme.js"></script>
+  <script type="module" src="js/hero.js"></script>
+  <script type="module">
+    import { renderMath } from './js/katex-init.js';
+    window.addEventListener('load', () => renderMath());
+  </script>
+</body>
+</html>
