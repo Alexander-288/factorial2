@@ -39,3 +39,5 @@ animacja/output/
 
 # BluntCMS (kopia lokalna, nie w repo)
 site/blunt/
+animacja/dist/
+animacja/dist-player/

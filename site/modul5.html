@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moduł 5: Animacja - Pole między x² a cos x</title>
+  <script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Martian+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script type="module" src="animacja/player.js"></script>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <div class="panel">
+    <header class="top">
+      <a class="brand" href="index.html" data-blunt="brand">Pole między x² a cos x</a>
+      <nav class="pill-nav" aria-label="Moduły">
+        <a href="modul1.html">Matematyka</a>
+        <a href="modul2.html">Program</a>
+        <a href="modul3.html">Arkusz</a>
+        <a href="modul4.html">GeoGebra</a>
+        <a href="modul5.html" aria-current="page">Animacja</a>
+      </nav>
+      <div class="theme-switch" role="group" aria-label="Motyw">
+        <button type="button" data-theme="light">Jasny</button>
+        <button type="button" data-theme="dark">Ciemny</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <p class="kicker" data-blunt="kicker">Moduł 5 z 5</p>
+      <h1 data-blunt="title">Animacja metod numerycznych</h1>
+      <p class="lead" data-blunt="lead">Animacja powstała w bibliotece Motion Canvas. Odtwarzacz poniżej liczy każdą klatkę na żywo w przeglądarce, z tych samych funkcji co reszta strony. Niżej jest też nagranie MP4.</p>
+
+      <div class="player">
+        <!-- src względem animacja/player.js (odtwarzacz importuje projekt ze swojego folderu) -->
+        <motion-canvas-player class="media" src="./project.js" auto></motion-canvas-player>
+      </div>
+
+      <h2 data-blunt="s1-title">1. Bisekcja</h2>
+      <p data-blunt="s1-p1">Przedział $[a, b]$ zaczyna się od $[0, 1]$. W każdym kroku liczymy środek $c$ i zostawiamy tę połowę, na której $f$ zmienia znak. Panel po prawej pokazuje $a$, $b$, $c$ i $f(c)$ w każdym kroku. Po 19 krokach połowa szerokości przedziału spada poniżej $\varepsilon = 10^{-6}$.</p>
+
+      <h2 data-blunt="s2-title">2. Całkowanie</h2>
+      <p data-blunt="s2-p1">Liczba trapezów rośnie: $n = 2, 4, 8, \dots, 64$. Za każdym podwojeniem błąd $|T_n - P|$ spada około 4 razy, a luka między trapezami i krzywą $\cos x$ znika. W granicy $T_n \to P$ przy $n \to \infty$.</p>
+
+      <h2 data-blunt="video-title">Nagranie</h2>
+      <div id="video-box">
+        <video class="media" controls preload="metadata" src="media/animacja.mp4"></video>
+        <p><a class="btn ghost" href="media/animacja.mp4" download data-blunt="dl-mp4">Pobierz MP4</a></p>
+      </div>
+
+      <nav class="pager" aria-label="Kolejne moduły">
+        <a href="modul4.html" class="mono">[Moduł 4: GeoGebra]</a>
+        <a href="index.html" class="mono">[Start]</a>
+      </nav>
+    </main>
+
+    <footer class="foot">
+      <p data-blunt="footer-left">Projekt z metod numerycznych, 2026</p>
+      <p data-blunt="footer-right">Sprengel, Ankiewicz, Nastały, Kowalczyk</p>
+    </footer>
+  </div>
+  <script src="js/theme.js"></script>
+  <script type="module" src="js/backdrop.js"></script>
+  <script type="module" src="js/modul5.js"></script>
+</body>
+</html>
