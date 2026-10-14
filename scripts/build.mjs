@@ -33,7 +33,10 @@ for (const [from, to] of extra) {
 // Renderuje wzory tylko w tekście: pomija tagi, <script>, <style>, <pre>, <code>
 export function renderMath(html, file = '') {
   const parts = html.split(/(<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<pre[\s\S]*?<\/pre>|<code[\s\S]*?<\/code>|<[^>]+>)/i);
-  const tex = (src, displayMode) => {
+  // CMS zapisuje tekst z encjami HTML; KaTeX potrzebuje surowego LaTeX-a
+  const decode = (s) => s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#0?39;/g, "'").replace(/&amp;/g, '&');
+  const tex = (raw, displayMode) => {
+    const src = decode(raw);
     try {
       return katex.renderToString(src, { displayMode, throwOnError: true, strict: 'ignore' });
     } catch (e) {

@@ -136,3 +136,7 @@ pre code.hljs { background: transparent; padding: 18px; font: 400 0.8125rem/1.6 
 /* Szersza sekcja dla znaczków */
 .wide { max-width: 1132px; margin: 0 auto; padding: 0 24px; }
 @media (max-width: 860px) { .wide { padding: 0 16px; } }
+
+/* Chmury dot-matrix w tle; panel lekko przezroczysty, żeby prześwitywały */
+.backdrop { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
+.panel { position: relative; background: color-mix(in srgb, var(--paper) 84%, transparent); }

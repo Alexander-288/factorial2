@@ -125,3 +125,29 @@ export function onRedraw(fn) {
   new MutationObserver(fn).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change', fn);
 }
+
+// Szum wartości (value noise) do chmur tła
+const hash = (x, y) => {
+  const s = Math.sin(x * 127.1 + y * 311.7) * 43758.5453;
+  return s - Math.floor(s);
+};
+const smooth = (t) => t * t * (3 - 2 * t);
+function noise(x, y) {
+  const xi = Math.floor(x), yi = Math.floor(y), xf = smooth(x - xi), yf = smooth(y - yi);
+  const a = hash(xi, yi), b = hash(xi + 1, yi), c = hash(xi, yi + 1), d = hash(xi + 1, yi + 1);
+  return a + (b - a) * xf + (c - a) * yf + (a - b - c + d) * xf * yf;
+}
+const fbm = (x, y) => noise(x, y) * 0.55 + noise(x * 2.1, y * 2.1) * 0.3 + noise(x * 4.3, y * 4.3) * 0.15;
+
+// Chmury tła: ledwo widoczne kropki w kolorze tekstu
+export function drawClouds(canvas) {
+  const p = palette();
+  const dark = getComputedStyle(document.documentElement).colorScheme.includes('dark');
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  draw(canvas, (x, y) => {
+    const n = fbm(x * 1.5 + 3.1, y * 1.9 + 7.7);
+    const d = Math.min(0.9, Math.max(0, (n - 0.38) * 2.4));
+    return [d, p.ink];
+  }, { cell: 4, dot: 0.5, view: { cx: w / Math.min(w, h) / 2, cy: -h / Math.min(w, h) / 2, span: 1 } });
+  canvas.style.opacity = dark ? '0.22' : '0.14';
+}
