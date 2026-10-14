@@ -38,7 +38,7 @@ Strona działa z BluntCMS Thick. Folder `site/` to katalog strony, a `site/blunt
 3. Otwórz `http://localhost:8090/blunt/setup.php`, ustaw hasło i plik tokenów `css/tokens.css`.
 4. Edytuj strony, np. `http://localhost:8090/blunt/edit.php?page=index.html`.
 
-Każdy tekst ma nazwę `data-blunt`. Wzory zapisuje się jako zwykły LaTeX między `$`. Po edycji uruchom `npm run build` i zrób commit.
+Każdy tekst ma nazwę `data-blunt`. Wzory zapisuje się jako zwykły LaTeX między `$`. Po edycji zrób commit i push, a GitHub Actions zbuduje i opublikuje stronę.
 
 ## Moduły strony
 
