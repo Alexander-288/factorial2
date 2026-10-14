@@ -1,0 +1,41 @@
+/* Tokeny projektu. BluntCMS edytuje blok :root (motyw jasny). */
+:root {
+  --canvas: #d8d8d5;
+  --paper: #f7f7f5;
+  --ink: #111111;
+  --muted: #6b6b68;
+  --line: #e2e2de;
+  --chip: #ebebe8;
+  --accent: #2f5bd3;
+  --stamp: #e4e4e0;
+  --panel-radius: 28px;
+  --card-radius: 16px;
+  --pill-radius: 999px;
+  --gap: 24px;
+}
+
+/* Motyw ciemny: ręczny przełącznik */
+:root[data-theme="dark"] {
+  --canvas: #000000;
+  --paper: #0c0c0c;
+  --ink: #f2f2f0;
+  --muted: #8d8d89;
+  --line: #222222;
+  --chip: #191919;
+  --accent: #6f93ff;
+  --stamp: #161616;
+}
+
+/* Motyw ciemny: ustawienie systemu, gdy nic nie wybrano */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --canvas: #000000;
+    --paper: #0c0c0c;
+    --ink: #f2f2f0;
+    --muted: #8d8d89;
+    --line: #222222;
+    --chip: #191919;
+    --accent: #6f93ff;
+    --stamp: #161616;
+  }
+}

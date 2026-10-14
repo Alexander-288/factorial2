@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moduł 3: Arkusz - Pole między x² a cos x</title>
+  <script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Martian+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <div class="panel">
+    <header class="top">
+      <a class="brand" href="index.html" data-blunt="brand">Pole między x² a cos x</a>
+      <nav class="pill-nav" aria-label="Moduły">
+        <a href="modul1.html">Matematyka</a>
+        <a href="modul2.html">Program</a>
+        <a href="modul3.html" aria-current="page">Arkusz</a>
+        <a href="modul4.html">GeoGebra</a>
+        <a href="modul5.html">Animacja</a>
+      </nav>
+      <div class="theme-switch" role="group" aria-label="Motyw">
+        <button type="button" data-theme="light">Jasny</button>
+        <button type="button" data-theme="dark">Ciemny</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <p class="kicker" data-blunt="kicker">Moduł 3 z 5</p>
+      <h1 data-blunt="title">Arkusz kalkulacyjny</h1>
+      <p class="lead" data-blunt="lead">Arkusz przygotował Kordian Nastały. Zawiera tabelę iteracji bisekcji, tabelę całkowania dla $n = 10$ i wykres obszaru. Wszystkie wartości w arkuszu są liczone formułami.</p>
+      <p id="xlsx"><a class="btn" href="pliki/obszar.xlsx" download data-blunt="dl-xlsx">Pobierz arkusz (obszar.xlsx)</a></p>
+      <img class="shot" src="img/arkusz.png" alt="Zrzut ekranu arkusza z tabelami i wykresem obszaru">
+
+      <h2 data-blunt="bisect-title">Bisekcja na $[0, 1]$, $\varepsilon = 10^{-6}$</h2>
+      <p data-blunt="bisect-text">Te same kolumny co w arkuszu. Po 19 krokach połowa długości przedziału spada poniżej $\varepsilon$.</p>
+      <div class="table-wrap"><table id="bisect-table"></table></div>
+
+      <h2 data-blunt="int-title">Całkowanie dla $n = 10$</h2>
+      <p data-blunt="int-params">$$a = -r = -0.824132, \quad b = r = 0.824132, \quad n = 10, \quad h = \frac{b-a}{n} = 0.164826$$</p>
+      <div class="table-wrap"><table id="int-table"></table></div>
+      <p data-blunt="int-results">$$T_{10} = 1.083966, \qquad S_{10} = 1.094760, \qquad P = 1.094754$$</p>
+
+      <nav class="pager" aria-label="Kolejne moduły">
+        <a href="modul2.html" class="mono">[Moduł 2: Program]</a>
+        <a href="modul4.html" class="mono">[Moduł 4: GeoGebra]</a>
+      </nav>
+    </main>
+
+    <footer class="foot">
+      <p data-blunt="footer-left">Projekt z metod numerycznych, 2026</p>
+      <p data-blunt="footer-right">Sprengel, Ankiewicz, Nastały, Kowalczyk</p>
+    </footer>
+  </div>
+  <script src="js/theme.js"></script>
+  <script type="module" src="js/backdrop.js"></script>
+  <script type="module" src="js/modul3.js"></script>
+</body>
+</html>

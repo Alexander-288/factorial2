@@ -4,74 +4,90 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pole między x² a cos x</title>
+  <script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Martian+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-  <header class="top">
-    <div class="top-inner">
-      <a class="brand" href="index.html">Pole między x² a cos x</a>
-      <nav class="modules" aria-label="Moduły">
-        <a href="modul1.html">1. Matematyka</a>
-        <a href="modul2.html">2. Program</a>
-        <a href="modul3.html">3. Arkusz</a>
-        <a href="modul4.html">4. GeoGebra</a>
-        <a href="modul5.html">5. Animacja</a>
+  <div class="panel">
+    <header class="top">
+      <a class="brand" href="index.html" data-blunt="brand">Pole między x² a cos x</a>
+      <nav class="pill-nav" aria-label="Moduły">
+        <a href="modul1.html">Matematyka</a>
+        <a href="modul2.html">Program</a>
+        <a href="modul3.html">Arkusz</a>
+        <a href="modul4.html">GeoGebra</a>
+        <a href="modul5.html">Animacja</a>
       </nav>
-      <button id="theme-toggle" type="button" aria-label="Zmień motyw jasny lub ciemny">Motyw</button>
-    </div>
-  </header>
-  <main>
-    <h1>Pole obszaru między $y = x^2$ a $y = \cos x$</h1>
-    <p class="lead">Dwie krzywe przecinają się w dwóch punktach i zamykają między sobą obszar.
-    Liczymy jego pole metodami numerycznymi.</p>
+      <div class="theme-switch" role="group" aria-label="Motyw">
+        <button type="button" data-theme="light">Jasny</button>
+        <button type="button" data-theme="dark">Ciemny</button>
+      </div>
+    </header>
 
-    <figure style="margin:0">
-      <div class="hero-plot" id="hero-plot"></div>
-      <figcaption class="plot-caption">Obszar między krzywymi, od $-r$ do $r$. Punkty przecięcia wyznaczone bisekcją.</figcaption>
-    </figure>
+    <main>
+      <section class="hero">
+        <h1><span class="soft" data-blunt="hero-title-1">Pole obszaru</span> <span data-blunt="hero-title-2">między x² a cos x</span></h1>
+        <p class="lead" data-blunt="hero-lead">Dwie krzywe przecinają się w dwóch punktach i zamykają między sobą obszar. Liczymy jego pole metodami numerycznymi.</p>
+        <div class="plot" id="hero-plot">
+          <canvas aria-label="Wykres y = cos x i y = x² z zaznaczonym obszarem między punktami przecięcia" role="img"></canvas>
+          <span class="plot-label" data-x="-0.824132" data-y="-0.1" data-blunt="label-left">−0.824132</span>
+          <span class="plot-label" data-x="0.824132" data-y="-0.1" data-blunt="label-right">0.824132</span>
+          <span class="plot-label" data-x="0" data-y="0.55" data-blunt="label-area">P ≈ 1.094754</span>
+        </div>
+      </section>
+      <div class="hero-foot">
+        <p data-blunt="foot-left">Bisekcja, trapezy, Simpson.</p>
+        <p data-blunt="foot-center">Niebieska krzywa to cos x, czarna to x². Kropki pokazują obszar, którego pole liczymy.</p>
+        <p><a href="#moduly" class="mono" data-blunt="foot-right">[Przejdź do modułów]</a></p>
+      </div>
 
-    <h2>Problem</h2>
-    <p>Punktów przecięcia nie da się wyznaczyć analitycznie, bo trzeba rozwiązać równanie przestępne
-    $x^2 - \cos x = 0$. Dlatego granice całkowania znajdujemy metodą bisekcji, a pole liczymy
-    metodą trapezów i metodą Simpsona:</p>
-    $$P = \int_{a}^{b} \left(\cos x - x^2\right)\,dx$$
+      <div class="content">
+        <p class="kicker" data-blunt="problem-kicker">Problem</p>
+        <p data-blunt="problem-1">Punktów przecięcia nie da się wyznaczyć analitycznie, bo trzeba rozwiązać równanie przestępne $x^2 - \cos x = 0$. Dlatego granice całkowania znajdujemy metodą bisekcji, a pole liczymy metodą trapezów i metodą Simpsona.</p>
+        <p data-blunt="problem-formula">$$P = \int_{a}^{b} \left(\cos x - x^2\right)\,dx$$</p>
 
-    <h2>Wyniki</h2>
-    <div class="facts">
-      <div>Punkty przecięcia<strong>±0.824132</strong></div>
-      <div>Bisekcja, $\varepsilon = 10^{-6}$<strong>19 iteracji</strong></div>
-      <div>Trapezy, $n = 100$<strong>1.094646</strong></div>
-      <div>Simpson, $n = 10$<strong>1.094760</strong></div>
-    </div>
+        <h2 data-blunt="results-title">Wyniki</h2>
+        <div class="facts">
+          <div class="fact"><p data-blunt="fact-1-label">Punkty przecięcia</p><strong data-blunt="fact-1-value">±0.824132</strong></div>
+          <div class="fact"><p data-blunt="fact-2-label">Bisekcja, ε = 10⁻⁶</p><strong data-blunt="fact-2-value">19 iteracji</strong></div>
+          <div class="fact"><p data-blunt="fact-3-label">Trapezy, n = 100</p><strong data-blunt="fact-3-value">1.094646</strong></div>
+          <div class="fact"><p data-blunt="fact-4-label">Simpson, n = 10</p><strong data-blunt="fact-4-value">1.094760</strong></div>
+        </div>
 
-    <h2>Moduły</h2>
-    <ol class="module-list">
-      <li><a href="modul1.html"><span class="num">1</span><span>Opracowanie matematyczne<span class="desc">Całka, bisekcja i twierdzenie Darboux, wzory trapezów i Simpsona, błędy.</span></span></a></li>
-      <li><a href="modul2.html"><span class="num">2</span><span>Implementacja programistyczna<span class="desc">Programy w Pythonie i C++ z wynikami uruchomienia.</span></span></a></li>
-      <li><a href="modul3.html"><span class="num">3</span><span>Arkusz kalkulacyjny<span class="desc">Tabele iteracji bisekcji i całkowania, wykres obszaru.</span></span></a></li>
-      <li><a href="modul4.html"><span class="num">4</span><span>Aplet GeoGebry<span class="desc">Zacieniowany obszar i trapezy sterowane suwakiem $n$.</span></span></a></li>
-      <li><a href="modul5.html"><span class="num">5</span><span>Animacja<span class="desc">Zawężanie przedziału bisekcji i zagęszczanie podziału.</span></span></a></li>
-    </ol>
+      </div>
+      <div class="wide">
+        <h2 id="moduly" data-blunt="modules-title">Moduły</h2>
+        <ul class="stamps">
+          <li><a class="stamp" href="modul1.html"><canvas data-stamp="area" aria-hidden="true"></canvas><span class="stamp-title" data-blunt="m1-title">Opracowanie matematyczne</span><span class="stamp-desc" data-blunt="m1-desc">Całka, bisekcja i twierdzenie Darboux, wzory i błędy.</span><span class="stamp-num">1</span></a></li>
+          <li><a class="stamp" href="modul2.html"><canvas data-stamp="code" aria-hidden="true"></canvas><span class="stamp-title" data-blunt="m2-title">Implementacja</span><span class="stamp-desc" data-blunt="m2-desc">Programy w Pythonie i C++ z wynikami uruchomienia.</span><span class="stamp-num">2</span></a></li>
+          <li><a class="stamp" href="modul3.html"><canvas data-stamp="sheet" aria-hidden="true"></canvas><span class="stamp-title" data-blunt="m3-title">Arkusz kalkulacyjny</span><span class="stamp-desc" data-blunt="m3-desc">Tabele bisekcji i całkowania, wykres obszaru.</span><span class="stamp-num">3</span></a></li>
+          <li><a class="stamp" href="modul4.html"><canvas data-stamp="geo" aria-hidden="true"></canvas><span class="stamp-title" data-blunt="m4-title">Aplet GeoGebry</span><span class="stamp-desc" data-blunt="m4-desc">Obszar i trapezy sterowane suwakiem n.</span><span class="stamp-num">4</span></a></li>
+          <li><a class="stamp" href="modul5.html"><canvas data-stamp="anim" aria-hidden="true"></canvas><span class="stamp-title" data-blunt="m5-title">Animacja</span><span class="stamp-desc" data-blunt="m5-desc">Zawężanie bisekcji i zagęszczanie podziału.</span><span class="stamp-num">5</span></a></li>
+        </ul>
 
-    <h2>Zespół</h2>
-    <ul class="team">
-      <li><strong>Aleksander Sprengel</strong>: strona, opracowanie matematyczne, GeoGebra, animacja</li>
-      <li><strong>Adam Kowalczyk</strong>: program w Pythonie</li>
-      <li><strong>Mikołaj Ankiewicz</strong>: program w C++</li>
-      <li><strong>Kordian Nastały</strong>: arkusz kalkulacyjny</li>
-    </ul>
-  </main>
-  <footer>Projekt z metod numerycznych, 2026. Aleksander Sprengel, Mikołaj Ankiewicz, Kordian Nastały, Adam Kowalczyk.</footer>
+      </div>
+      <div class="content">
+        <h2 data-blunt="team-title">Zespół</h2>
+        <ul>
+          <li data-blunt="team-1">Aleksander Sprengel: strona, opracowanie matematyczne, GeoGebra, animacja</li>
+          <li data-blunt="team-2">Adam Kowalczyk: program w Pythonie</li>
+          <li data-blunt="team-3">Mikołaj Ankiewicz: program w C++</li>
+          <li data-blunt="team-4">Kordian Nastały: arkusz kalkulacyjny</li>
+        </ul>
+      </div>
+    </main>
+
+    <footer class="foot">
+      <p data-blunt="footer-left">Projekt z metod numerycznych, 2026</p>
+      <p data-blunt="footer-right">Sprengel, Ankiewicz, Nastały, Kowalczyk</p>
+    </footer>
+  </div>
   <script src="js/theme.js"></script>
-  <script type="module" src="js/hero.js"></script>
-  <script type="module">
-    import { renderMath } from './js/katex-init.js';
-    window.addEventListener('load', () => renderMath());
-  </script>
+  <script type="module" src="js/backdrop.js"></script>
+  <script type="module" src="js/start.js"></script>
 </body>
 </html>

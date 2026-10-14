@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moduł 2: Program - Pole między x² a cos x</title>
+  <script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Martian+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" id="hl-light">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" id="hl-dark" media="not all">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <div class="panel">
+    <header class="top">
+      <a class="brand" href="index.html" data-blunt="brand">Pole między x² a cos x</a>
+      <nav class="pill-nav" aria-label="Moduły">
+        <a href="modul1.html">Matematyka</a>
+        <a href="modul2.html" aria-current="page">Program</a>
+        <a href="modul3.html">Arkusz</a>
+        <a href="modul4.html">GeoGebra</a>
+        <a href="modul5.html">Animacja</a>
+      </nav>
+      <div class="theme-switch" role="group" aria-label="Motyw">
+        <button type="button" data-theme="light">Jasny</button>
+        <button type="button" data-theme="dark">Ciemny</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <p class="kicker" data-blunt="kicker">Moduł 2 z 5</p>
+      <h1 data-blunt="title">Implementacja programistyczna</h1>
+      <p class="lead" data-blunt="lead">Oba programy robią to samo. Bisekcją szukają ujemnego i dodatniego punktu przecięcia z dokładnością $\varepsilon = 10^{-6}$, a potem liczą pole metodą trapezów i metodą Simpsona dla $n = 4, 10, 100$ i porównują wynik z wartością dokładną $P \approx 1.094754$.</p>
+
+      <div class="tabs" role="tablist" aria-label="Język programu">
+        <button role="tab" id="tab-python" aria-selected="true" aria-controls="panel-python" data-lang="python" data-blunt="tab-python">Python, Adam Kowalczyk</button>
+        <button role="tab" id="tab-cpp" aria-selected="false" aria-controls="panel-cpp" data-lang="cpp" data-blunt="tab-cpp">C++, Mikołaj Ankiewicz</button>
+      </div>
+      <section role="tabpanel" id="panel-python" aria-labelledby="tab-python" data-panel="python">
+        <pre><code class="language-python" data-src="kod/calka.py"></code></pre>
+        <p><a class="btn ghost" href="kod/calka.py" download data-blunt="dl-python">Pobierz calka.py</a></p>
+        <h2 data-blunt="run-python-title">Uruchomienie</h2>
+        <p data-blunt="run-python-text">Zrzut ekranu z terminala: widać dokładność $\varepsilon$, liczbę podprzedziałów $n$ i wynik pola.</p>
+        <img class="shot" src="img/python.png" alt="Zrzut ekranu: uruchomienie programu w Pythonie z parametrami eps, n i wynikiem pola">
+      </section>
+      <section role="tabpanel" id="panel-cpp" aria-labelledby="tab-cpp" data-panel="cpp" hidden>
+        <pre><code class="language-cpp" data-src="kod/calka.cpp"></code></pre>
+        <p><a class="btn ghost" href="kod/calka.cpp" download data-blunt="dl-cpp">Pobierz calka.cpp</a></p>
+        <h2 data-blunt="run-cpp-title">Uruchomienie</h2>
+        <p data-blunt="run-cpp-text">Zrzut ekranu z kompilacji i uruchomienia: widać $\varepsilon$, $n$ i wynik pola.</p>
+        <img class="shot" src="img/cpp.png" alt="Zrzut ekranu: kompilacja i uruchomienie programu w C++ z parametrami eps, n i wynikiem pola">
+      </section>
+
+      <nav class="pager" aria-label="Kolejne moduły">
+        <a href="modul1.html" class="mono">[Moduł 1: Matematyka]</a>
+        <a href="modul3.html" class="mono">[Moduł 3: Arkusz]</a>
+      </nav>
+    </main>
+
+    <footer class="foot">
+      <p data-blunt="footer-left">Projekt z metod numerycznych, 2026</p>
+      <p data-blunt="footer-right">Sprengel, Ankiewicz, Nastały, Kowalczyk</p>
+    </footer>
+  </div>
+  <script src="js/theme.js"></script>
+  <script type="module" src="js/backdrop.js"></script>
+  <script type="module" src="js/modul2.js"></script>
+</body>
+</html>
