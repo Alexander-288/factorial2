@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moduł 1: Matematyka - Pole między x² a cos x</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="index.html">Pole między x² a cos x</a>
+      <nav class="modules" aria-label="Moduły">
+        <a href="modul1.html" aria-current="page">1. Matematyka</a>
+        <a href="modul2.html">2. Program</a>
+        <a href="modul3.html">3. Arkusz</a>
+        <a href="modul4.html">4. GeoGebra</a>
+        <a href="modul5.html">5. Animacja</a>
+      </nav>
+      <button id="theme-toggle" type="button" aria-label="Zmień motyw jasny lub ciemny">Motyw</button>
+    </div>
+  </header>
+  <main>
+    <h1>Moduł 1: Opracowanie matematyczne</h1>
+
+    <h2>Sformułowanie problemu</h2>
+    <p>Obszar jest ograniczony krzywymi $y = \cos x$ (od góry) i $y = x^2$ (od dołu).
+    Pomiędzy punktami przecięcia $a$ i $b$ zachodzi $\cos x \ge x^2$, więc pole wynosi</p>
+    $$P = \int_{a}^{b} \left(\cos x - x^2\right)\,dx.$$
+    <p>Oznaczmy $f(x) = \cos x - x^2$. Punkty przecięcia to miejsca zerowe funkcji $f$.
+    Funkcja $f$ jest parzysta, bo $f(-x) = f(x)$, więc $a = -r$ i $b = r$ dla pewnego $r > 0$, a</p>
+    $$P = \int_{-r}^{r} f(x)\,dx = 2\int_{0}^{r} f(x)\,dx.$$
+
+    <h2>Granice całkowania: metoda bisekcji</h2>
+    <p><strong>Twierdzenie Darboux.</strong> Jeśli $f$ jest ciągła na $[a, b]$ i $f(a)\,f(b) < 0$,
+    to istnieje $c \in (a, b)$ takie, że $f(c) = 0$.</p>
+    <p>Dla $f(x) = \cos x - x^2$ na przedziale $[0, 1]$:</p>
+    $$f(0) = 1 > 0, \qquad f(1) = \cos 1 - 1 \approx -0.4597 < 0,$$
+    <p>a $f$ jest ciągła, więc pierwiastek istnieje. Jest jedyny, bo
+    $f'(x) = -\sin x - 2x < 0$ dla $x \in (0, 1]$, czyli $f$ jest tam malejąca.
+    Z parzystości drugi pierwiastek leży w $[-1, 0]$.</p>
+    <p><strong>Algorytm.</strong> Zaczynamy od $[a_0, b_0] = [0, 1]$. W kroku $k$:</p>
+    $$c_k = \frac{a_k + b_k}{2}, \qquad
+    [a_{k+1}, b_{k+1}] =
+    \begin{cases}
+    [a_k, c_k], & f(a_k)\,f(c_k) < 0,\\
+    [c_k, b_k], & \text{w przeciwnym razie.}
+    \end{cases}$$
+    <p>Każdy krok zachowuje zmianę znaku na końcach przedziału, więc pierwiastek w nim zostaje,
+    a długość przedziału maleje dwukrotnie. Kończymy, gdy $\frac{b_k - a_k}{2} < \varepsilon$,
+    i przyjmujemy $r \approx \frac{a_k + b_k}{2}$. Błąd jest wtedy mniejszy niż $\varepsilon$.</p>
+    <p>Po $k$ krokach $b_k - a_k = 2^{-k}$, więc warunek stopu to $2^{-(k+1)} < \varepsilon$.
+    Dla $\varepsilon = 10^{-6}$ daje to $k + 1 > \log_2 10^6 \approx 19.93$, czyli $k = 19$ iteracji.</p>
+    $$r \approx 0.824132, \qquad a = -r, \quad b = r.$$
+
+    <h2>Wzory całkowania numerycznego</h2>
+    <p>Przedział $[a, b]$ dzielimy na $n$ równych podprzedziałów:</p>
+    $$h = \frac{b - a}{n}, \qquad x_i = a + i\,h, \quad i = 0, 1, \dots, n,$$
+    <p>gdzie $n$ to liczba podprzedziałów, a $h$ to krok całkowania.</p>
+
+    <h3>Złożona metoda trapezów</h3>
+    <p>Na każdym podprzedziale $[x_i, x_{i+1}]$ zastępujemy $f$ odcinkiem łączącym
+    $(x_i, f(x_i))$ i $(x_{i+1}, f(x_{i+1}))$. Pole takiego trapezu to
+    $\frac{h}{2}\left(f(x_i) + f(x_{i+1})\right)$. Po zsumowaniu każdy punkt wewnętrzny występuje dwa razy:</p>
+    $$T_n = h\left[\frac{f(x_0)}{2} + \sum_{i=1}^{n-1} f(x_i) + \frac{f(x_n)}{2}\right].$$
+
+    <h3>Złożona metoda Simpsona</h3>
+    <p>Dla parzystego $n$ łączymy podprzedziały w pary $[x_{2j}, x_{2j+2}]$ i przez trzy punkty
+    prowadzimy parabolę. Całka z tej paraboli to
+    $\frac{h}{3}\left(f(x_{2j}) + 4f(x_{2j+1}) + f(x_{2j+2})\right)$. Po zsumowaniu:</p>
+    $$S_n = \frac{h}{3}\left[f(x_0) + 4\sum_{i\ \text{nieparz.}} f(x_i) + 2\sum_{\substack{i\ \text{parz.}\\ 0 \lt i \lt n}} f(x_i) + f(x_n)\right].$$
+
+    <h2>Szacowanie błędu</h2>
+    <p>Dla pewnego $\xi \in (a, b)$:</p>
+    $$E_T = -\frac{(b-a)\,h^2}{12} f''(\xi), \qquad E_S = -\frac{(b-a)\,h^4}{180} f^{(4)}(\xi).$$
+    <p>Tutaj $f''(x) = -\cos x - 2$, więc $|f''| \le 3$, oraz $f^{(4)}(x) = \cos x$, więc $|f^{(4)}| \le 1$.
+    Przy $b - a = 2r \approx 1.648$:</p>
+    $$|E_T| \le 0.412\,h^2, \qquad |E_S| \le 0.00916\,h^4.$$
+    <p>Podwojenie $n$ zmniejsza $h$ dwa razy, więc błąd metody trapezów spada około 4 razy,
+    a metody Simpsona około 16 razy. Ponieważ $f'' < 0$ (funkcja wklęsła), trapezy leżą pod wykresem
+    i zawsze $T_n < P$.</p>
+    <p>Do porównania mamy wartość dokładną. Granice wyznaczamy numerycznie, ale samą całkę można policzyć:</p>
+    $$P = \left[\sin x - \frac{x^3}{3}\right]_{-r}^{r} = 2\sin r - \frac{2r^3}{3} \approx 1.094754.$$
+    <p>Tabela pokazuje, jak błąd maleje przy kolejnych podwojeniach $n$
+    (kolumna „spadek” to iloraz błędu dla $n/2$ i dla $n$):</p>
+    <div class="table-wrap"><table id="error-table"></table></div>
+    <p class="note" id="error-note"></p>
+
+    <nav class="pager" aria-label="Kolejne moduły">
+      <a href="index.html">Strona główna</a>
+      <a href="modul2.html">Moduł 2: Program</a>
+    </nav>
+  </main>
+  <footer>Projekt z metod numerycznych, 2026. Aleksander Sprengel, Mikołaj Ankiewicz, Kordian Nastały, Adam Kowalczyk.</footer>
+  <script src="js/theme.js"></script>
+  <script type="module" src="js/modul1.js"></script>
+  <script type="module">
+    import { renderMath } from './js/katex-init.js';
+    window.addEventListener('load', () => renderMath());
+  </script>
+</body>
+</html>
